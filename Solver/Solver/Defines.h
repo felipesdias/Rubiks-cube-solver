@@ -1,5 +1,7 @@
 #pragma once
 
+#define AMOUNT_MOVEMENTS 12
+
 #define YELLOW 0
 #define BLUE 1
 #define WHITE 2

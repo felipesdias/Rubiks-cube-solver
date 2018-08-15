@@ -12,7 +12,7 @@ void aplyMoves(int CUBE, std::string setupMove);
 
 int main()
 {	
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	int CUBE;
 	initializeCube(cube);
 	
@@ -28,23 +28,27 @@ int main()
 	// aplyMoves(cube, "R' U R' U'");
 	// aplyMoves(cube, "R U U R' U' R U U L' U R' U' L");
 	// aplyMoves(cube, "R U R' U R U U R'");
-	aplyMoves(cube, "L U U L B' U U R L' F");
+	aplyMoves(cube, "R U R U R");
 
-	int nMoves = 8;
-	int *moves = new int[nMoves + 1];
-	findSetup(cube, moves, nMoves, 0);
+	int nMoves = 5;
+	std::cout << "Maximum number of movements: ";
+	std::cin >> nMoves;
+	std::cout << "\n";
+
+	startFind(cube, nMoves);
 
 	// printCube(cube);
-	
-	system("pause");
 
-	delete moves;
+	std::cout << "Finish\n";
+	std::cin.get();
+	std::cin.get();
+
 	return 0;
 }
 
 void aplyMoves(int CUBE, std::string setupMove) {
 	std::vector<std::string> moves = sSplit(setupMove, " ");
-	for (int i = 0; i < moves.size(); i++) {
+	for (size_t i = 0; i < moves.size(); i++) {
 		if (moves[i] == "R")
 			move::right(cube);
 		else if (moves[i] == "R'")
